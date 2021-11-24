@@ -11,12 +11,22 @@
     <title>Video Player</title>
   </head>
   <body>
+    <h1 class="text-center">Feeds</h1>
     <div class="d-flex flex-column">
       {% for x in video %}
       <video class="embed-responsive embed-responsive-16by9" controls="controls">
         <source src="{{x.video.url}}" type="video/mp4" />
       </video>
       <h3 class="text-center mt-2 mb-2">{{x.caption}}</h3>
+      <!--Download Summary:
+      <a href="{{x.video.url}}" download>{{x.video}}</a>-->
+      <hr/>
+      {% endfor %}
+    </div>
+    <h1 class="text-center">Download Summary:</h1>
+    <div class="text-center">
+      {% for x in video %}
+      <a href="{{x.video.url}}" download>Cam: {{x}}</a>
       <hr/>
       {% endfor %}
     </div>
