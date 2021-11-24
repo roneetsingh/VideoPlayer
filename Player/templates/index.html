@@ -1,4 +1,18 @@
 <!doctype html>
+<style>
+  a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: red;
+  }
+  </style>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -16,25 +30,26 @@
         <h1 class="navbar-brand text-center">AI Detection Videos</h1>
       </div>
     </nav>
-    <div class="d-flex flex-column p-5">
+    <div class="d-flex flex-column p-5 border shadow rounded m-5">
       {% for x in video %}
       <h3 class="text-center mt-2 mb-2">{{x.caption}}</h3>
       <br/>
       <center>
-        <video class="embed-responsive embed-responsive-16by9 border shadow rounded col-3" controls="controls">
+        <video class="embed-responsive embed-responsive-16by9 border shadow rounded col-8" controls="controls">
           <source src="{{x.video.url}}" type="video/mp4" />
         </video>
       </center>
       <hr/>
       {% endfor %}
+    </div class="d-flex flex-column p-5 border shadow rounded m-5">
+    <h1 class="text-center">Download Highlights</h1>
+      <div class="text-center inline-block">
+        {% for x in video %}
+        <a class="border shadow rounded col-4 m-5" href="{{x.video.url}}" download>Download {{x}}</a>
+        {% endfor %}
+      </div>
     </div>
-    <h1 class="text-center">Download Summary:</h1>
-    <div class="text-center">
-      {% for x in video %}
-      <a href="{{x.video.url}}" download>{{x}}</a>
-      <hr/>
-      {% endfor %}
-    </div>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
